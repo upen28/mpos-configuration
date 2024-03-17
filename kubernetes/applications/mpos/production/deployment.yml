@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mpos-service
+  labels:
+    app: mpos-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mpos-service
+  template:
+    metadata:
+      labels:
+        app: mpos-service
+    spec:
+      containers:
+        - name: mpos-service
+          image: upendra28/mpos:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8090
+          env:
+            - name: DB_URL
+              value: xqs9UXmQlYvyC50qx1GqcgTUlzaMU8DhRhnqTUquAtxTyHS2j0ieR6KkX6lX76dYCt2kGBF4jPNXoaNOxbsP1UI5dOrfNr94JJ0p9AH5vVIxfldBfDLRsDvAUUhCfq9C
+            - name: DB_PASSWORD
+              value: lPvDg4GhAob6N146oqjukw==
+            - name: DB_USERNAME
+              value: GxVMYrjHGKc4Nee1ftfoig==  
+          
+      

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mpos-service
+  labels:
+    app: mpos-service
+spec:
+  type: ClusterIP
+  selector:
+    app: mpos-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8090
