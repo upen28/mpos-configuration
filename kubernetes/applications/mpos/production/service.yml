@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mpos-service
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: mpos-service
   ports:
