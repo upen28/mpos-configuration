@@ -15,7 +15,7 @@ spec:
         app: mpos
     spec:
       containers:
-        - name: mpos-service-1.0
+        - name: mpos-container
           image: upendra28/mpos:1.0
           imagePullPolicy: IfNotPresent
           ports:
@@ -26,6 +26,4 @@ spec:
             - name: DB_PASSWORD
               value: lPvDg4GhAob6N146oqjukw==
             - name: DB_USERNAME
-              value: GxVMYrjHGKc4Nee1ftfoig==  
-          
-      
+              value: GxVMYrjHGKc4Nee1ftfoig==
