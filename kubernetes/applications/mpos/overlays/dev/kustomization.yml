@@ -5,6 +5,7 @@ resources:
 - ../../base
 
 namespace: dev
+namePrefix: dev-
 
 patches:
   - path: patch-env.yml  

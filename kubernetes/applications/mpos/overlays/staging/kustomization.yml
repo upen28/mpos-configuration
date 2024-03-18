@@ -5,6 +5,7 @@ resources:
   - ../../base
 
 namespace: staging
+namePrefix: staging-
 
 patches:
   - path: patch-env.yml
