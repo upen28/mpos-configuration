@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - ../../base
 
-namePrefix: staging-  
+namespace: staging
 
 patches:
   - path: patch-env.yml

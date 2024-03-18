@@ -4,12 +4,12 @@ kind: Kustomization
 resources:
 - ../../base
 
-namePrefix: dev-
+namespace: dev
 
 patches:
-  - path: patch-env.yml
+  - path: patch-env.yml  
 
 replicas: 
   - name: mpos-service
     count: 1  
-   
+ 
