@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: mpos-rollout
+  labels:
+    app: mpos-rollout
+spec:
+  replicas: 1
+  strategy:
+    canary:
+      # Reference to a Service which the controller will update to point to the canary ReplicaSet
+      canaryService: mpos-service-canary
+      # Reference to a Service which the controller will update to point to the stable ReplicaSet
+      stableService: mpos-service-stable
+      trafficRouting:
+        nginx:
+          # Reference to an Ingress which has a rule pointing to the stable service (e.g. rollouts-demo-stable)
+          # This ingress will be cloned with a new name, in order to achieve NGINX traffic splitting.
+          stableIngress: mpos-service-ingress-stable
+      steps:
+        - setWeight: 50
+        - pause: {}
+  selector:
+    matchLabels:
+      app: mpos
+  template:
+    metadata:
+      labels:
+        app: mpos
+    spec:
+      containers:
+        - name: mpos-container
+          image: upendra28/mpos:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8090
+          env:
+            - name: DB_URL
+              value: xqs9UXmQlYvyC50qx1GqcgTUlzaMU8DhRhnqTUquAtxTyHS2j0ieR6KkX6lX76dYCt2kGBF4jPNXoaNOxbsP1UI5dOrfNr94JJ0p9AH5vVIxfldBfDLRsDvAUUhCfq9C
+            - name: DB_PASSWORD
+              value: lPvDg4GhAob6N146oqjukw==
+            - name: DB_USERNAME
+              value: GxVMYrjHGKc4Nee1ftfoig==

@@ -1,11 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mpos-svc
+  name: mpos-service-stable
   labels:
-    app: mpos-svc
+    app: mpos-service-stable
 spec:
-  type: ClusterIP
   selector:
     app: mpos
   ports:
